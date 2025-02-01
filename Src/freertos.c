@@ -31,6 +31,7 @@
 #include <stdlib.h>
 #include <time.h>
 #include <stdbool.h>
+#include <math.h>
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -165,7 +166,7 @@ void StartDefaultTask(void const * argument)
 	uint32_t y_cell = height_screen / height_snake;
 	osEvent event;
 
-	for (;;) {
+	while(true) {
 		print_start_screen();
 
 		while(true) {
@@ -300,7 +301,7 @@ void StartDefaultTask(void const * argument)
 					yR * height_snake, (yR + 1) * height_snake, White);
 
 			oled_UpdateScreen();
-			osDelay(100);
+			osDelay(100 / sqrt((score + 1)));
 		}
 
 		current_node = head;
